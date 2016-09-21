@@ -1,3 +1,4 @@
+require("!style!css!./style.css")
 document.write('Hello webpack, it works!')
 document.write(require('./content.js'))
 
