@@ -1,0 +1,1 @@
+document.write('Hello webpack, it works!')
