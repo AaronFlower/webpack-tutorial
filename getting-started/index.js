@@ -1,7 +1,11 @@
-require("!style!css!./style.css")
-document.write('Hello webpack, it works!')
+// require("!style!css!./style.css")
+require("./style.css")
+document.write('Hello webpack, it works fine!')
+document.write('watch kidding!')
 document.write(require('./content.js'))
 
+cats = require('./cats.js')
+console.log(cats)
 /**
  * Webpack will analyze your entry file for dependencies to other files.
  * This files(called modules) are include in your bundle.js too.
