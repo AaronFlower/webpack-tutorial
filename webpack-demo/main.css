@@ -1,0 +1,10 @@
+body {
+	margin: auto;
+	width: 60%;
+	& h1 {
+		background: cornsilk;
+	}
+}
+h1 {
+	color: deepskyblue;
+}
