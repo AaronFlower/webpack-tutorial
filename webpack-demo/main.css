@@ -8,3 +8,19 @@ body {
 h1 {
 	color: deepskyblue;
 }
+
+ul {
+	display: flex;
+	list-style: none;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	padding: 10px;
+	background: tomato;
+	color: white;
+	text-align: center;
+}

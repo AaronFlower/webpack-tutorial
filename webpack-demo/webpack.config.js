@@ -1,5 +1,7 @@
 	// var precss 	= require('precss')
 	// var autoprefixer = require('autoprefixer')
+	// let autoprefixer = require('autoprefixer')
+	let cssnext = require('postcss-cssnext') // postcss-cssnext 已经包含了 autoprefixer的功能。
 	module.exports = {
 		entry: './app.js',
 		output: {
@@ -17,8 +19,10 @@
 		      	test: /\.css$/,
 		      	exclude: /node_modules/,
 		      	// loaders: ['style', 'css'], // 顺序从右向左，支持loaders 和loader两种写法。
-		      	loader: 'style!css'
+		      	loader: 'style!css!postcss'
 		      }
 		    ]
-		}
+		},
+		// postcss 是一个单独的module.
+    postcss: [cssnext()]
 	}
