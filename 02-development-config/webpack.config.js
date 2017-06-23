@@ -11,7 +11,10 @@ let config = {
 
 	'plugins': [
 		new htmlPlugin()
-	]
+	],
+	'devServer': {
+		'port': 8083
+	}
 }
 
 module.exports = config
