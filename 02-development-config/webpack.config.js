@@ -1,5 +1,6 @@
 const path = require('path')
 const htmlPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 let config = {
 	'entry': './src/index.js',
@@ -9,8 +10,11 @@ let config = {
 		'filename': 'bundle.js'
 	},
 
+	'devtool': 'cheap-eval-source-map',
+
 	'plugins': [
-		new htmlPlugin()
+		new htmlPlugin(),
+		new BundleAnalyzerPlugin()
 	],
 	'devServer': {
 		'port': 8083

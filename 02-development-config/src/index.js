@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import cats from './cats'
 
 function component() {
 	let element = document.createElement('div')
@@ -7,3 +8,5 @@ function component() {
 }
 
 document.body.appendChild(component())
+
+cats.map(_ => console.log(_))
