@@ -12,7 +12,12 @@
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^5.0.1",
+    "vue-loader": "^12.2.1",
+    "vue-template-compiler": "^2.3.4",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
+  },
+  "dependencies": {
+    "vue": "^2.3.4"
   }
 }
