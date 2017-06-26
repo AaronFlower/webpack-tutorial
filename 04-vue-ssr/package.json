@@ -1,0 +1,23 @@
+{
+  "name": "04-vue-ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "express": "^4.15.3",
+    "vue-loader": "^12.2.1",
+    "vue-template-compiler": "^2.3.4",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "dependencies": {
+    "vue": "^2.3.4"
+  }
+}
