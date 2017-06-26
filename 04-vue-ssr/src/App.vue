@@ -7,6 +7,12 @@
 	<p>
 		The url is: {{url}}
 	</p>	
+	<router-link to="/foo">Go to Foo</router-link>
+	<router-link to="/bar">Go to Bar</router-link>
+	<router-link to="/bar">Go to Baz</router-link>
+	<div>
+	 <router-view></router-view>
+	</div>
 </div>
 </template>
 
