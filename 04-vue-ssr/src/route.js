@@ -26,6 +26,14 @@ export function createRouter () {
 		    path: '/foo',
 		    name: 'foo',
 		    component: () => import('./components/Foo.vue')
+		  },
+		  {
+		  	path: '/item/:id',
+		  	component: () => import('./components/item.vue')
+		  },
+		  {
+		  	path: '/inc',
+		  	component: () => import('./components/Inc.vue')
 		  }
 		 ]
 	})

@@ -18,6 +18,41 @@ node build/vue-ssr-server.js
 
 ### 引入 Vue-router
 
+### 引入Vuex prefetching
+
+```javascript
+window.__INITIAL_STATE__= {
+  "items": {
+    ":3": {
+      "id": ":3",
+      "name": "eason",
+      "title": "The love story!"
+    }
+  },
+  "route": {
+    "from": {
+      "fullPath": "/",
+      "hash": "",
+      "meta": {},
+      "name": null,
+      "params": {},
+      "path": "/",
+      "query": {}
+    },
+    "fullPath": "/item/:3",
+    "hash": "",
+    "meta": {},
+    "params": {
+      "id": ":3"
+    },
+    "path": "/item/:3",
+    "query": {}
+  }
+}
+```
+
+
+
 
 
 ### Todo
