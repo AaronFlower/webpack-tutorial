@@ -10,7 +10,7 @@ export function createRouter () {
 		  {
 		    path: '/',
 		    name: 'index',
-		    component: (resolve) => require(['./App.vue'], resolve)
+		    component: () => import('./App.vue')
 		  },
 		  {
 		    path: '/bar',
@@ -20,12 +20,12 @@ export function createRouter () {
 		  {
 		    path: '/baz',
 		    name: 'baz',
-		    component: (resolve) => require(['./components/Baz.vue'], resolve)
+		    component: () => import('./components/Baz.vue')
 		  },
 		  {
 		    path: '/foo',
 		    name: 'foo',
-		    component: (resolve) => require(['./components/Foo.vue'], resolve)
+		    component: () => import('./components/Foo.vue')
 		  }
 		 ]
 	})

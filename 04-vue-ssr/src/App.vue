@@ -9,7 +9,7 @@
 	</p>	
 	<router-link to="/foo">Go to Foo</router-link>
 	<router-link to="/bar">Go to Bar</router-link>
-	<router-link to="/bar">Go to Baz</router-link>
+	<router-link to="/baz">Go to Baz</router-link>
 	<div>
 	 <router-view></router-view>
 	</div>
