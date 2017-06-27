@@ -23,8 +23,8 @@ module.exports = {
 
 	output: {
 		libraryTarget: 'commonjs2', // This tells the server bundle to use Node-style exports
-		path: path.resolve(__dirname, 'build/dist'),
-		publicPath: '/build/dist',
+		path: path.resolve(__dirname, '../dist/server'),
+		// publicPath: '',
 		filename: 'server-bundle.js'
 	},
 

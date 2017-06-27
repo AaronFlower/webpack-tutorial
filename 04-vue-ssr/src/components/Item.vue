@@ -18,3 +18,9 @@ export default {
 	}
 }
 </script>
+
+<style>
+	code {
+		color: red;
+	}
+</style>

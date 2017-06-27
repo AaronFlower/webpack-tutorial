@@ -15,6 +15,7 @@ export default context => {
 
 	  // set server-side router's location
 	  router.push(context.url)
+	  console.log('context.url:', context.url)
 
 	  // wait until router has resolved possible async components and hooks
 	  router.onReady(() => {
@@ -25,7 +26,7 @@ export default context => {
 			const matchedComponents = router.getMatchedComponents()
 			console.log('matchedComponents: ', matchedComponents)
 
-			if (!matchedComponents.length) {
+			if (!matchedComponents.length && !context.url.startsWith('/dist')) {
 				reject({code: 404})
 			}
 
