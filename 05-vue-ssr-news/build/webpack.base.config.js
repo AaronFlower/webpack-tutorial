@@ -8,7 +8,7 @@ const srcPath = path.resolve(projectRoot, 'src')
 
 module.exports = {
 	entry: {
-		app: './src/main.js'
+		app: './src/entry-client.js'
 	},
 
 	output: {
@@ -29,7 +29,7 @@ module.exports = {
 				exclude: '/node_modules/',
 				include: projectRoot,
 				options: {
-					fix: true
+					// fix: true
 				}
 			},
 			{
