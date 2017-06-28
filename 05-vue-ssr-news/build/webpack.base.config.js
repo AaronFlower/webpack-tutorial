@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const htmlPlugin = require('html-webpack-plugin')
 
 const projectRoot = path.resolve(__dirname, '../')
@@ -6,7 +7,9 @@ const buildPath = path.resolve(projectRoot, 'dist')
 const srcPath = path.resolve(projectRoot, 'src')
 
 module.exports = {
-	entry: './src/main.js',
+	entry: {
+		app: './src/main.js'
+	},
 
 	output: {
 		path: buildPath,
@@ -45,6 +48,7 @@ module.exports = {
 		new htmlPlugin({
 			title: 'Vue-SSR',
 			template: path.resolve(srcPath, './index.html')
-		})
+		}),
+		new webpack.HotModuleReplacementPlugin()
 	]
 }

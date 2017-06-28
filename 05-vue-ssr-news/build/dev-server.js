@@ -1,12 +1,21 @@
 const webpack = require('webpack')
 const express = require('express')
 const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const baseConfig = require('./webpack.base.config')
+
+Object.keys(baseConfig.entry).forEach(name => {
+	baseConfig.entry[name] = ['webpack-hot-middleware/client'].concat(baseConfig.entry[name])
+})
+console.log(baseConfig.entry)
 const compiler = webpack(baseConfig)
 
 const app = express()
-app.use(webpackDevMiddleware(compiler, {
+/**
+ * https://github.com/webpack/webpack-dev-middleware
+ */
+ app.use(webpackDevMiddleware(compiler, {
 	noInfo: false,
 	publicPath: '/',
 	stats: {
@@ -14,6 +23,14 @@ app.use(webpackDevMiddleware(compiler, {
 	}
 }))
 
+/**
+ * https://www.npmjs.com/package/webpack-hot-middleware
+ * 对于 IE 可能需要 EventSource polyfill https://libraries.io/search?platforms=NPM&q=eventsource+polyfill
+ */
+app.use(webpackHotMiddleware(compiler, {
+	noInfo: true,
+	publicPath: '/'
+}))
 
 app.listen(3033, (err) => {
 	if (err) {

@@ -1,7 +1,10 @@
 <template>
-	<p>
-		Hello {{msg}}!
-	</p>
+	<div>
+		<h2>Vue SSR</h2>	
+		<p>
+			Hello {{msg}}!
+		</p>
+	</div>
 </template>
 
 <script>
