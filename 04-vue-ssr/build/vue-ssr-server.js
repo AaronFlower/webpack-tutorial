@@ -5,6 +5,8 @@ const express = require('express')
 // 加载 config-server 的配置
 const webpackConfig = require('./webpack.config-server')
 const compiler = webpack(webpackConfig)
+const LRU = require('lru-cache')
+
 
 /**
  * 把 webpack config-server.js 的生成的 json 文件加载过来。
@@ -29,6 +31,10 @@ const renderer = createBundleRenderer(
 		template: fs.readFileSync(path.resolve(__dirname, '../src/index.template.html'), 'utf-8'),
 		clientManifest,
 		// inject: false // 指定 inject false 可以自己在模版中指定 assets injection 的位置。
+		cache: LRU({
+			max: 10000,
+			maxAge: 50000
+		})
 	}
 )
 server = express()
