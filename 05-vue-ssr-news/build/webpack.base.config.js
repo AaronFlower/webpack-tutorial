@@ -13,7 +13,7 @@ module.exports = {
 
 	output: {
 		path: buildPath,
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 
 	resolve: {
@@ -45,10 +45,10 @@ module.exports = {
 	},
 
 	plugins: [
-		new htmlPlugin({
-			title: 'Vue-SSR',
-			template: path.resolve(srcPath, './index.html')
-		}),
+		// new htmlPlugin({
+		// 	title: 'Vue-SSR',
+		// 	template: path.resolve(srcPath, './index.html')
+		// }),
 		new webpack.HotModuleReplacementPlugin()
 	]
 }

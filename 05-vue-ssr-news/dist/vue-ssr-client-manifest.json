@@ -1,0 +1,44 @@
+{
+  "publicPath": "/client",
+  "all": [
+    "app.js",
+    "manifest.js"
+  ],
+  "initial": [
+    "manifest.js",
+    "app.js"
+  ],
+  "async": [],
+  "modules": {
+    "78bcdf66": [
+      0
+    ],
+    "580dc59e": [
+      0
+    ],
+    "5cd4bb6c": [
+      0
+    ],
+    "d3b51f06": [
+      0
+    ],
+    "5d05e5d0": [
+      0
+    ],
+    "e11e32e6": [
+      0
+    ],
+    "03ca237a": [
+      0
+    ],
+    "2722714c": [
+      0
+    ],
+    "6e26d4e6": [
+      0
+    ],
+    "cbcd348c": [
+      0
+    ]
+  }
+}

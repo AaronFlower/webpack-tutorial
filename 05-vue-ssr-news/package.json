@@ -21,6 +21,7 @@
     "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.5.0",
     "webpack-hot-middleware": "^2.18.0",
+    "webpack-merge": "^4.1.0",
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
