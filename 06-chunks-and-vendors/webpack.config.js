@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const htmlWebpackPlugin = require('html-webpack-plugin') 
 
 module.exports = {
 	entry: {
@@ -14,6 +15,9 @@ module.exports = {
 		filename: '[name].js'
 	},
 	plugins: [
+		new htmlWebpackPlugin({
+			title: 'Webpack CommonsChunkPlugin'
+		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor'
 		})
