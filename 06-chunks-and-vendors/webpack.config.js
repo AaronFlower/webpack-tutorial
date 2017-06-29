@@ -11,7 +11,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
-		filename: '[name].js'
+		filename: '[name].[chunkhash].js'
 	},
 	plugins: [
 		new htmlWebpackPlugin({
@@ -21,8 +21,8 @@ module.exports = {
 			name: 'self.lodash.vendor', 
 			chunks: ['main', 'moduleA', 'moduleB', 'moduleC'] // 如果不指定 chunks 则 entry 的所有 chunk 都会被选中。
 		}),
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'manifest'
-		// })
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'manifest'
+		})
 	]
 }

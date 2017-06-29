@@ -1,2 +1,2 @@
 import _ from './lodash.js'
-console.log(_.join(['Hello', 'World', 'main'], '*'))
+console.log(_.join(['Hello', 'World-', 'main'], '*'))
