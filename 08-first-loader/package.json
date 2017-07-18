@@ -1,0 +1,16 @@
+{
+  "name": "08-first-loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "loader-utils": "^1.1.0",
+    "webpack": "^3.3.0"
+  }
+}
