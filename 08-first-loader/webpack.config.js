@@ -10,7 +10,8 @@ module.exports = {
 
 	resolveLoader: {
 		alias: {
-			'my-loader': path.resolve(__dirname, 'loaders/my-loader.js')
+			'my-loader': path.resolve(__dirname, 'loaders/my-loader.js'),
+			'capitalizer': path.resolve(__dirname, 'loaders/capitalizer-loader.js')
 		}
 	},
 
@@ -18,12 +19,18 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				use: {
-					loader: 'my-loader',
-					options: {
-						name: 'webpack 2'
-					}
-				}
+				/**
+				 * 可以使用 use 传递 loader 数组。
+				 */
+				use: [
+					{
+						loader: 'my-loader',
+						options: {
+							name: 'webpack 2'
+						}
+					},
+					'capitalizer'
+				]
 			}
 		]
 	}
