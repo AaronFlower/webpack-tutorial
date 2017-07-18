@@ -1,8 +1,25 @@
+const path = require('path')
+
 module.exports = {
 	entry: './src/index.js',
 
 	output: {
 		filename: 'bundle.js',
-		path: require('path').resolve(__dirname, 'dist')
+		path: path.resolve(__dirname, 'dist')
+	},
+
+	resolveLoader: {
+		alias: {
+			'my-loader': path.resolve(__dirname, 'loaders/my-loader.js')
+		}
+	},
+
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				loader: ['my-loader']
+			}
+		]
 	}
 }
