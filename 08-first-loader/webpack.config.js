@@ -18,7 +18,12 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				loader: ['my-loader']
+				use: {
+					loader: 'my-loader',
+					options: {
+						name: 'webpack 2'
+					}
+				}
 			}
 		]
 	}

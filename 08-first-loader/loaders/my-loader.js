@@ -1,5 +1,7 @@
+const loaderUtils = require('loader-utils')
+
 module.exports = function (source) {
-	console.log(source)
-	let result = source.replace('world', 'Webpack')
+	let options = loaderUtils.getOptions(this) || {}
+	let result = source.replace('world', options.name || 'webpack')
 	return result
 }
