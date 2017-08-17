@@ -7140,7 +7140,7 @@ setTimeout(function () {
 
 /* harmony default export */ __webpack_exports__["a"] = (Vue$3);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(8)))
 
 /***/ }),
 /* 1 */
@@ -7339,7 +7339,7 @@ process.umask = function() { return 0; };
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(7)
+  __webpack_require__(9)
 }
 var Component = __webpack_require__(3)(
   /* script */
@@ -7475,195 +7475,6 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(0);
-
-
-
-// client-specific bootstrapping logic ...
-/**
- * 对于 entry-client 的 Client Data Fetching 有两种处理方法：
- * 1. 在跳转之前处理获取数据， resolve data before route navigation
- * 2. 或者在 view 渲染之后再获取数据，fetch data after the mathced view is rendered。
- * 采用那种方法，还是看你需要那种 UX。
- * 但是无论那一种都需要实现 beforeRouteUpdate() 函数，即当 component 重用进其 asyncData 应该先调用。
- * 对于大项目的 Vuex store 可以分隔成多个模块。 
- */
-// a global mixin that calls `asyncData` when a route component's params change
-__WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].mixin({
-  beforeRouteUpdate (to, from, next) {
-    const { asyncData } = this.$options
-    if (asyncData) {
-      asyncData({
-        store: this.$store,
-        route: to
-      }).then(next).catch(next)
-    } else {
-      next()
-    }
-  }
-})
-
-const {app, router, store} = __WEBPACK_IMPORTED_MODULE_0__app__["a" /* createApp */]()
-
-if (window.__INITIAL_STATE__) {
-	store.replaceState(window.__INITIAL_STATE__)
-}
-
-router.onReady(() => {
-
-	// Add router hook for handling asyncData.
-	// Doing it after initial route is resolved so that we don't double-fetch
-	// the data that we already have. Using router.beforeResolve() so that all
-	// async components are resolved.
-	router.beforeResolve((to, from, next) => {
-	  const matched = router.getMatchedComponents(to)
-	  const prevMatched = router.getMatchedComponents(from)
-	  let diffed = false
-	  const activated = matched.filter((c, i) => {
-	    return diffed || (diffed = (prevMatched[i] !== c))
-	  })
-	  const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _)
-	  if (!asyncDataHooks.length) {
-	    return next()
-	  }
-
-	  Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
-	    .then(() => {
-	      next()
-	    })
-	    .catch(next)
-	})
-
-	app.$mount('#app')
-})
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = createApp;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__route__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_router_sync___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__);
-console.log('Hello Vue SSR')
-/**
- * 在传统的 Client APP 是要在 app.js 将 vue 直接注入到 DOM 中的。但是现在却不同了。
- */
-
-
-
-
-// Sync vue-router's current $route as part of vuex store's state.
- 
-
-/**
- * 在这里添加一个 context 参数用于标识 client/server 端的环境测试。
- */
-function createApp (context) {
-
-	// create router and store instances
-	const router = __WEBPACK_IMPORTED_MODULE_2__route__["a" /* createRouter */]()
-	const store = __WEBPACK_IMPORTED_MODULE_3__store__["a" /* createStore */]()
-
-
-	// sync so that route state is available as part of the store
-	__WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__["sync"](store, router)
-
-	const app = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
-		router,
-		store,
-		render: h => h('div', [
-			h(__WEBPACK_IMPORTED_MODULE_1__App_vue___default.a, {
-				props: {
-					url: context && context.url ? 'server' : 'client'
-				}
-			})
-		])
-	})
-
-	return {app, router, store}
-}
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(8);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(10)("483e12db", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6db74a57\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6db74a57\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(9)();
-// imports
-
-
-// module
-exports.push([module.i, "\nh2 {\n\tcolor: deepskyblue;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports) {
 
 /*
@@ -7719,7 +7530,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 10 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -7940,6 +7751,195 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(0);
+
+
+
+// client-specific bootstrapping logic ...
+/**
+ * 对于 entry-client 的 Client Data Fetching 有两种处理方法：
+ * 1. 在跳转之前处理获取数据， resolve data before route navigation
+ * 2. 或者在 view 渲染之后再获取数据，fetch data after the mathced view is rendered。
+ * 采用那种方法，还是看你需要那种 UX。
+ * 但是无论那一种都需要实现 beforeRouteUpdate() 函数，即当 component 重用进其 asyncData 应该先调用。
+ * 对于大项目的 Vuex store 可以分隔成多个模块。 
+ */
+// a global mixin that calls `asyncData` when a route component's params change
+__WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].mixin({
+  beforeRouteUpdate (to, from, next) {
+    const { asyncData } = this.$options
+    if (asyncData) {
+      asyncData({
+        store: this.$store,
+        route: to
+      }).then(next).catch(next)
+    } else {
+      next()
+    }
+  }
+})
+
+const {app, router, store} = __WEBPACK_IMPORTED_MODULE_0__app__["a" /* createApp */]()
+
+if (window.__INITIAL_STATE__) {
+	store.replaceState(window.__INITIAL_STATE__)
+}
+
+router.onReady(() => {
+
+	// Add router hook for handling asyncData.
+	// Doing it after initial route is resolved so that we don't double-fetch
+	// the data that we already have. Using router.beforeResolve() so that all
+	// async components are resolved.
+	router.beforeResolve((to, from, next) => {
+	  const matched = router.getMatchedComponents(to)
+	  const prevMatched = router.getMatchedComponents(from)
+	  let diffed = false
+	  const activated = matched.filter((c, i) => {
+	    return diffed || (diffed = (prevMatched[i] !== c))
+	  })
+	  const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _)
+	  if (!asyncDataHooks.length) {
+	    return next()
+	  }
+
+	  Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
+	    .then(() => {
+	      next()
+	    })
+	    .catch(next)
+	})
+
+	app.$mount('#app')
+})
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = createApp;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__route__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_router_sync___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__);
+console.log('Hello Vue SSR')
+/**
+ * 在传统的 Client APP 是要在 app.js 将 vue 直接注入到 DOM 中的。但是现在却不同了。
+ */
+
+
+
+
+// Sync vue-router's current $route as part of vuex store's state.
+ 
+
+/**
+ * 在这里添加一个 context 参数用于标识 client/server 端的环境测试。
+ */
+function createApp (context) {
+
+	// create router and store instances
+	const router = __WEBPACK_IMPORTED_MODULE_2__route__["a" /* createRouter */]()
+	const store = __WEBPACK_IMPORTED_MODULE_3__store__["a" /* createStore */]()
+
+
+	// sync so that route state is available as part of the store
+	__WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__["sync"](store, router)
+
+	const app = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+		router,
+		store,
+		render: h => h('div', [
+			h(__WEBPACK_IMPORTED_MODULE_1__App_vue___default.a, {
+				props: {
+					url: context && context.url ? 'server' : 'client'
+				}
+			})
+		])
+	})
+
+	return {app, router, store}
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(10);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("483e12db", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6db74a57\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6db74a57\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, "\nh2 {\n\tcolor: deepskyblue;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 11 */
 /***/ (function(module, exports) {
 
@@ -8085,11 +8085,11 @@ function createRouter () {
 		  },
 		  {
 		  	path: '/item/:id',
-		  	component: () => __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 23))
+		  	component: () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 23))
 		  },
 		  {
 		  	path: '/inc',
-		  	component: () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 24))
+		  	component: () => __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 24))
 		  }
 		 ]
 	})
@@ -11537,4 +11537,4 @@ function cloneRoute (to, from) {
 
 
 /***/ })
-],[4]);
+],[6]);

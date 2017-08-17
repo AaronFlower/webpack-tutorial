@@ -1,4 +1,4 @@
-webpackJsonp([0],{
+webpackJsonp([1],{
 
 /***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
@@ -6,9 +6,9 @@ webpackJsonp([0],{
 var disposed = false
 var Component = __webpack_require__(3)(
   /* script */
-  __webpack_require__(30),
-  /* template */
   __webpack_require__(32),
+  /* template */
+  __webpack_require__(34),
   /* styles */
   null,
   /* scopeId */
@@ -41,12 +41,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 30:
+/***/ 32:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_modules_foo__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_modules_foo__ = __webpack_require__(33);
 //
 //
 //
@@ -76,7 +76,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 31:
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -102,7 +102,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 32:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

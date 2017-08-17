@@ -91,7 +91,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + chunkId + "." + {"0":"e47b0b24f7e21d3daf48","1":"fe82c2a0ce69fc8d232f","2":"59cfa30574adedc05bf7","3":"8d93816bfeed7bbecacc","4":"82304c62e6935a955e68","5":"e15c210989549869c463"}[chunkId] + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + chunkId + "." + {"0":"69c970ecc75b9291f2c7","1":"5b7840606b4801eb27d9","2":"59cfa30574adedc05bf7","3":"8d93816bfeed7bbecacc","4":"82304c62e6935a955e68","5":"b228cb45a2854b09f1c1"}[chunkId] + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -141,7 +141,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist";
+/******/ 	__webpack_require__.p = "/dist/client";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
