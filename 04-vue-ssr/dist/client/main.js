@@ -1,4 +1,151 @@
-webpackJsonp([5],[
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules, executeModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [], result;
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules, executeModules);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// objects to store loaded and loading chunks
+/******/ 	var installedChunks = {
+/******/ 		5: 0
+/******/ 	};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData === 0) {
+/******/ 			return new Promise(function(resolve) { resolve(); });
+/******/ 		}
+/******/
+/******/ 		// a Promise means "currently loading".
+/******/ 		if(installedChunkData) {
+/******/ 			return installedChunkData[2];
+/******/ 		}
+/******/
+/******/ 		// setup Promise in chunk cache
+/******/ 		var promise = new Promise(function(resolve, reject) {
+/******/ 			installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 		});
+/******/ 		installedChunkData[2] = promise;
+/******/
+/******/ 		// start chunk loading
+/******/ 		var head = document.getElementsByTagName('head')[0];
+/******/ 		var script = document.createElement('script');
+/******/ 		script.type = 'text/javascript';
+/******/ 		script.charset = 'utf-8';
+/******/ 		script.async = true;
+/******/ 		script.timeout = 120000;
+/******/
+/******/ 		if (__webpack_require__.nc) {
+/******/ 			script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 		}
+/******/ 		script.src = __webpack_require__.p + "" + chunkId + ".js";
+/******/ 		var timeout = setTimeout(onScriptComplete, 120000);
+/******/ 		script.onerror = script.onload = onScriptComplete;
+/******/ 		function onScriptComplete() {
+/******/ 			// avoid mem leaks in IE.
+/******/ 			script.onerror = script.onload = null;
+/******/ 			clearTimeout(timeout);
+/******/ 			var chunk = installedChunks[chunkId];
+/******/ 			if(chunk !== 0) {
+/******/ 				if(chunk) {
+/******/ 					chunk[1](new Error('Loading chunk ' + chunkId + ' failed.'));
+/******/ 				}
+/******/ 				installedChunks[chunkId] = undefined;
+/******/ 			}
+/******/ 		};
+/******/ 		head.appendChild(script);
+/******/
+/******/ 		return promise;
+/******/ 	};
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/dist/client";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ })
+/************************************************************************/
+/******/ ([
 /* 0 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7771,53 +7918,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * 对于大项目的 Vuex store 可以分隔成多个模块。 
  */
 // a global mixin that calls `asyncData` when a route component's params change
-__WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].mixin({
-  beforeRouteUpdate (to, from, next) {
-    const { asyncData } = this.$options
-    if (asyncData) {
-      asyncData({
-        store: this.$store,
-        route: to
-      }).then(next).catch(next)
-    } else {
-      next()
-    }
-  }
-})
+// Vue.mixin({
+//   beforeRouteUpdate (to, from, next) {
+//     const { asyncData } = this.$options
+//     if (asyncData) {
+//       asyncData({
+//         store: this.$store,
+//         route: to
+//       }).then(next).catch(next)
+//     } else {
+//       next()
+//     }
+//   }
+// })
 
 const {app, router, store} = __WEBPACK_IMPORTED_MODULE_0__app__["a" /* createApp */]()
 
-if (window.__INITIAL_STATE__) {
-	store.replaceState(window.__INITIAL_STATE__)
-}
+// if (window.__INITIAL_STATE__) {
+// 	store.replaceState(window.__INITIAL_STATE__)
+// }
 
-router.onReady(() => {
+// router.onReady(() => {
 
-	// Add router hook for handling asyncData.
-	// Doing it after initial route is resolved so that we don't double-fetch
-	// the data that we already have. Using router.beforeResolve() so that all
-	// async components are resolved.
-	router.beforeResolve((to, from, next) => {
-	  const matched = router.getMatchedComponents(to)
-	  const prevMatched = router.getMatchedComponents(from)
-	  let diffed = false
-	  const activated = matched.filter((c, i) => {
-	    return diffed || (diffed = (prevMatched[i] !== c))
-	  })
-	  const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _)
-	  if (!asyncDataHooks.length) {
-	    return next()
-	  }
+// 	// Add router hook for handling asyncData.
+// 	// Doing it after initial route is resolved so that we don't double-fetch
+// 	// the data that we already have. Using router.beforeResolve() so that all
+// 	// async components are resolved.
+// 	router.beforeResolve((to, from, next) => {
+// 	  const matched = router.getMatchedComponents(to)
+// 	  const prevMatched = router.getMatchedComponents(from)
+// 	  let diffed = false
+// 	  const activated = matched.filter((c, i) => {
+// 	    return diffed || (diffed = (prevMatched[i] !== c))
+// 	  })
+// 	  const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _)
+// 	  if (!asyncDataHooks.length) {
+// 	    return next()
+// 	  }
 
-	  Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
-	    .then(() => {
-	      next()
-	    })
-	    .catch(next)
-	})
+// 	  Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
+// 	    .then(() => {
+// 	      next()
+// 	    })
+// 	    .catch(next)
+// 	})
 
+// })
+console.log('Vue.prototype.$isServer', __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].prototype.$isServer)
+if (!__WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].prototype.$isServer) {
 	app.$mount('#app')
-})
+}
 
 
 /***/ }),
@@ -7833,6 +7983,7 @@ router.onReady(() => {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_router_sync___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vuex_router_sync__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__plugins_foo_plugin_js__ = __webpack_require__(20);
 console.log('Hello Vue SSR')
 /**
  * 在传统的 Client APP 是要在 app.js 将 vue 直接注入到 DOM 中的。但是现在却不同了。
@@ -7843,6 +7994,9 @@ console.log('Hello Vue SSR')
 
 // Sync vue-router's current $route as part of vuex store's state.
  
+// 引入 ssr 注册插件
+
+__WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_5__plugins_foo_plugin_js__["a" /* default */])
 
 /**
  * 在这里添加一个 context 参数用于标识 client/server 端的环境测试。
@@ -7998,6 +8152,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: {
@@ -8005,8 +8162,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data () {
 		return {
-			message: 'Hello SSR!'
+			message: 'Hello SSR!',
+			isH5: false
+			// isH5: !!window.FormData
 		}
+	},
+	// 对于 SSR 渲染时，在 beforeMount 之前是无法访问浏览器的 API 的，所以把此类的 api 放在 mounted 中。
+	mounted () {
+		this.isH5 = true
+		console.log('craze ... ')
+		// this.isH5 = !!window.FormData
+		setTimeout(() => {
+			console.log('App mountedd....., is-h5', this.isH5)
+			this.$alert()
+		}, 2000)
 	}
 });	
 
@@ -8016,27 +8185,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h2', [_vm._v("Hello Vue SSR")]), _vm._v(" "), _c('p', [_vm._v("\n\t\t" + _vm._s(_vm.message) + "\n\t")]), _vm._v(" "), _c('p', [_vm._v("\n\t\tThe url is: " + _vm._s(_vm.url) + "\n\t")]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/foo"
-    }
-  }, [_vm._v("Go to Foo")]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/bar"
-    }
-  }, [_vm._v("Go to Bar")]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/baz"
-    }
-  }, [_vm._v("Go to Baz")]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/item/:3"
-    }
-  }, [_vm._v("Go to Item")]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/inc"
-    }
-  }, [_vm._v("Go to Inc")]), _vm._v(" "), _c('div', [_c('router-view')], 1)], 1)
+  return _c('div', [_c('h2', [_vm._v("Hello Vue ssr $$$E")]), _vm._v(" "), _c('p', [_vm._v("\n\t\t" + _vm._s(_vm.message) + "\n\t")]), _vm._v(" "), _c('p', [_vm._v("\n\t\tThe url is: " + _vm._s(_vm.url) + "\n\t")]), _vm._v(" "), _c('p', [_vm._v("\n\t\tisH5:" + _vm._s(_vm.isH5) + "\n\t")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -8071,25 +8220,25 @@ function createRouter () {
 		  {
 		    path: '/bar',
 		    name: 'bar',
-		    component: () => __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 20))
+		    component: () => __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 21))
 		  },
 		  {
 		    path: '/baz',
 		    name: 'baz',
-		    component: () => __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 21))
+		    component: () => __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 22))
 		  },
 		  {
 		    path: '/foo',
 		    name: 'foo',
-		    component: () => __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 22))
+		    component: () => __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 23))
 		  },
 		  {
 		  	path: '/item/:id',
-		  	component: () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 23))
+		  	component: () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 24))
 		  },
 		  {
 		  	path: '/inc',
-		  	component: () => __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 24))
+		  	component: () => __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 25))
 		  }
 		 ]
 	})
@@ -11536,5 +11685,40 @@ function cloneRoute (to, from) {
 }
 
 
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  install (Vue) {
+    let component = {
+      data: {
+        items: [],
+        content: '',
+        showCount: 0
+      },
+      render (h) {
+        return h(
+          'div',
+          {class: 't-alert-container'},
+          ['Hello Vue SSR....']
+        )
+      }
+    }
+    if (!Vue.prototype.$isServer) {
+    	console.log('After to the client....')
+	    let vm = new Vue(component).$mount()
+	    document.body.appendChild(vm.$el)
+    }
+
+    Vue.prototype.$alert = function show() {
+    	console.log('Vue show...')
+    	alert('Vue show...')
+    }
+  }
+});
+
+
 /***/ })
-],[6]);
+/******/ ]);

@@ -14,6 +14,11 @@ module.exports = {
 		app: './src/entry-server.js'
 	},
 
+	// output: {
+	//   filename: 'server-bundle.js',
+	//   libraryTarget: 'commonjs2'
+	// },
+
 	resolve: {
 		extensions: ['.js', '.json', '.vue']
 	},

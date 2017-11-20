@@ -8,6 +8,9 @@ import {createRouter} from './route'
 import {createStore} from './store'
 // Sync vue-router's current $route as part of vuex store's state.
 import {sync} from 'vuex-router-sync' 
+// 引入 ssr 注册插件
+import FooPlugin from './plugins/foo-plugin.js'
+Vue.use(FooPlugin)
 
 /**
  * 在这里添加一个 context 参数用于标识 client/server 端的环境测试。

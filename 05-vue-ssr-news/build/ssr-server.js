@@ -27,6 +27,6 @@ app.get('/', (req, res) => {
 	})
 })
 
-app.listen(8082, () => {
+app.listen(process.env.PORT || 8082, () => {
 	console.log('The server is listening at http://localhost:8082\n')
 })

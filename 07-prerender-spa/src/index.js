@@ -5,8 +5,11 @@ import App from './App.vue'
 
 Vue.use(VueRouter)
 
-new Vue({
+const root = new Vue({
 	router,
-	el: '#app', 
 	render: h => h(App)
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+  root.$mount('#app')
 })

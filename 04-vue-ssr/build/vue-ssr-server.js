@@ -39,7 +39,7 @@ const renderer = createBundleRenderer(
 )
 server = express()
 console.log('static:', path.resolve(__dirname, '../dist'))
-server.use('/dist', express.static(path.resolve(__dirname, '../dist/client')))
+server.use('/dist/client', express.static(path.resolve(__dirname, '../dist/client')))
 
 /**
  * server-side 在开发时应该支持 hot-module-replacement 才行。

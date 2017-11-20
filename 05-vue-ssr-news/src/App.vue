@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2>Vue SSR</h2>	
+		<h2>Vue SSR Temp</h2>	
 		<p>
 			Hello {{msg}}!
 		</p>

@@ -1,24 +1,22 @@
 {
   "publicPath": "/dist/client",
   "all": [
-    "0.69c970ecc75b9291f2c7.js",
-    "1.5b7840606b4801eb27d9.js",
-    "2.59cfa30574adedc05bf7.js",
-    "3.8d93816bfeed7bbecacc.js",
-    "4.82304c62e6935a955e68.js",
-    "main.b228cb45a2854b09f1c1.js",
-    "manifest.27331072792eafe4b60a.js"
+    "0.js",
+    "1.js",
+    "2.js",
+    "3.js",
+    "4.js",
+    "main.js"
   ],
   "initial": [
-    "manifest.27331072792eafe4b60a.js",
-    "main.b228cb45a2854b09f1c1.js"
+    "main.js"
   ],
   "async": [
-    "0.69c970ecc75b9291f2c7.js",
-    "1.5b7840606b4801eb27d9.js",
-    "2.59cfa30574adedc05bf7.js",
-    "3.8d93816bfeed7bbecacc.js",
-    "4.82304c62e6935a955e68.js"
+    "0.js",
+    "1.js",
+    "2.js",
+    "3.js",
+    "4.js"
   ],
   "modules": {
     "251c9f1b": [
@@ -81,14 +79,17 @@
     "b664b1d6": [
       5
     ],
+    "63ac7539": [
+      5
+    ],
     "785db85a": [
-      4
+      2
     ],
     "777c404a": [
-      3
+      4
     ],
     "a1b8b9f4": [
-      2
+      3
     ],
     "63dfa663": [
       0
@@ -96,14 +97,17 @@
     "4b78621e": [
       1
     ],
+    "58e17430": [
+      2
+    ],
     "7b212193": [
-      4
+      2
     ],
     "6fd9dde0": [
-      3
+      4
     ],
     "3e2631a1": [
-      2
+      3
     ],
     "08556d57": [
       0

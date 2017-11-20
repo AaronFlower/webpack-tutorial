@@ -3,8 +3,9 @@ const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin') 
 
 module.exports = {
+  devtool: '#cheap-module-source-map',
 	entry: {
-		main: './src/main.js',
+		app: './src/main.js',
 		moduleA: './src/moduleA.js',
 		moduleB: './src/moduleB.js',
 		moduleC: './src/moduleC.js'
@@ -22,7 +23,8 @@ module.exports = {
 			chunks: ['main', 'moduleA', 'moduleB', 'moduleC'] // 如果不指定 chunks 则 entry 的所有 chunk 都会被选中。
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
-			name: 'manifest'
+			name: 'manifest',
+			minChunks: Infinity
 		})
 	]
 }

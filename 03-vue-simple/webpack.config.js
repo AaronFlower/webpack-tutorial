@@ -15,6 +15,10 @@ module.exports = {
 		historyApiFallback: true 
 	},
 
+	resolve: {
+		extensions: ['.js', '.vue']
+	}, 
+
 	module: {
 		rules: [
 			{
