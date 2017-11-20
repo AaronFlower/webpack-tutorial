@@ -10,10 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "postcss": "^6.0.14",
-    "postcss-import": "^11.0.0"
+    "css-loader": "^0.28.7",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.8",
+    "style-loader": "^0.19.0"
   },
   "dependencies": {
+    "extract-text-webpack-plugin": "^2.1.2",
     "normalize.css": "^7.0.0"
   }
 }

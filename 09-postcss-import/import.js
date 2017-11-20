@@ -7,8 +7,11 @@ var atImport = require('postcss-import')
 var css = fs.readFileSync('input.css', 'utf8')
 
 // process css
-postcss()
-	.use(atImport())
+// postcss()
+// 	.use(atImport) // 使用插件与 postcss([atImport()]) 一样
+
+// postcss([atImport])
+postcss().use(atImport)
 	.process(css, {
 		from: 'input.css'
 	})

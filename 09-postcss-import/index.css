@@ -1,0 +1,11 @@
+@media (min-width: 25em) {
+p {
+	margin: 0;
+}
+}
+h1 {
+	font-size: 2em;
+}
+body {
+	background: red;
+}
