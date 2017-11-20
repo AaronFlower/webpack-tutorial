@@ -1,0 +1,19 @@
+{
+  "name": "09-postcss-import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "postcss": "^6.0.14",
+    "postcss-import": "^11.0.0"
+  },
+  "dependencies": {
+    "normalize.css": "^7.0.0"
+  }
+}
