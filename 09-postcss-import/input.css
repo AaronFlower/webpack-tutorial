@@ -1,5 +1,6 @@
 @import 'bar.css' (min-width: 25em);
 @import 'foo.css';
+@import '@/buz.css';
 
 body {
 	background: red;

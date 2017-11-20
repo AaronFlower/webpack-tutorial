@@ -9,6 +9,12 @@ let config = {
 		filename: 'bundle.js'
 	},
 
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'assets')
+		}
+	},
+
 	module: {
 		rules: [
 			{

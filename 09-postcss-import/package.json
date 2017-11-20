@@ -12,6 +12,7 @@
   "devDependencies": {
     "css-loader": "^0.28.7",
     "postcss-import": "^11.0.0",
+    "postcss-import-webpack-resolver": "^1.0.1",
     "postcss-loader": "^2.0.8",
     "style-loader": "^0.19.0"
   },
