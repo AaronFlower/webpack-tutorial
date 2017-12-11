@@ -20,7 +20,7 @@ module.exports = {
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'self.lodash.vendor', 
-			chunks: ['main', 'moduleA', 'moduleB', 'moduleC'] // 如果不指定 chunks 则 entry 的所有 chunk 都会被选中。
+			chunks: ['moduleA', 'moduleB', 'moduleC'] // 如果不指定 chunks 则 entry 的所有 chunk 都会被选中。 你会看到 app 引入的 lodash 更大。
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'manifest',
