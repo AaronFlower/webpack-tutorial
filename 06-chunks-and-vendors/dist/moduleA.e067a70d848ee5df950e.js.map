@@ -1,1 +1,0 @@
-{"version":3,"file":"moduleA.e067a70d848ee5df950e.js","sources":["webpack:///./src/moduleA.js"],"sourcesContent":["import _ from './lodash.js'\nconsole.log(_.join(['Hello', 'World', 'A'], '*-'))\n\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/moduleA.js\n// module id = 2\n// module chunks = 3"],"mappings":";;;;;;AAAA;AAAA;AAAA;AACA;;;;A","sourceRoot":""}
