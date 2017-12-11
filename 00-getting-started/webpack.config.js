@@ -1,4 +1,4 @@
-const path = require('path')
+ const path = require('path')
 const distPath = path.resolve(__dirname, 'dist')
 const htmlPlugin = require('html-webpack-plugin')
 
