@@ -8,7 +8,10 @@ module.exports = {
 		app: './src/main.js',
 		moduleA: './src/moduleA.js',
 		moduleB: './src/moduleB.js',
-		moduleC: './src/moduleC.js'
+		moduleC: './src/moduleC.js',
+		modulejQueryA: './src/modulejQueryA.js',
+		modulejQueryB: './src/modulejQueryB.js',
+		modulejQueryC: './src/modulejQueryC.js',
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
