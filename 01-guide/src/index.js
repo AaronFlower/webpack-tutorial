@@ -1,6 +1,5 @@
 import _ from 'lodash'
-import './style.css'
-import Logo from './logo.png'
+import printMe from './print.js'
 
 function component() {
 	var element = document.createElement('div')
@@ -8,10 +7,11 @@ function component() {
 	element.innerHTML = _.join(['Hello', 'webpack'], ' ')
 	element.classList.add('hello')
 
-	var img = document.createElement('img')
-	img.src = Logo
+	var btn = document.createElement('button')
+	btn.innerHTML = 'Click me and check the console!'
+	btn.onclick = printMe
 
-	element.appendChild(img)
+	element.appendChild(btn)
 
 	return element
 }
