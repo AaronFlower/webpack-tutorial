@@ -25,3 +25,6 @@ npm config delete proxy
 
 ## CSS-loader
 
+## Source-Map
+The developer tools will only load this file if support for source maps is enabled and the developer tools are open.
+
