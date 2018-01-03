@@ -28,3 +28,21 @@ npm config delete proxy
 ## Source-Map
 The developer tools will only load this file if support for source maps is enabled and the developer tools are open.
 
+## Uglify
+
+一般用 UglifyJS 来精简混淆代码生成 source map, 最新的 UglifyJS 3 支持 ES5, 如果想支持 ES6 则需要用 UglifyES 来生成。
+
+```
+$ uglifyjs --version
+uglify-es 3.3.4
+```
+
+Uglify 还可以定义条件编译，即指定 `--define DEBUG=false`, 则下面的代码都会移除。这对开发会有用，dev 的时开启，production 时关闭。
+
+```
+if (DEBUG) {
+    console.log("debug stuff");
+}
+```
+
+
