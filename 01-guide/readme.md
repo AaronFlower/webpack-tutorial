@@ -45,4 +45,17 @@ if (DEBUG) {
 }
 ```
 
+## 选择一种开发模式
+
+每次要编译代码时，手动运行 `npm run build` 就会变得很麻烦。
+
+webpack 中有几个不同的选项，可以帮助你在代码发生变化后自动编译代码：
+
+- webpack's Watch Mode (简单的测试用)
+- webpack-dev-server (配置简单)
+- webpack-dev-middleware (复杂的还是这一种配置)
+
+
+
+
 
